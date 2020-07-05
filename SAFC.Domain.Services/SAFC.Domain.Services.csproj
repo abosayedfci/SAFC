@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SAFC.Domain.Core\SAFC.Domain.Core.csproj" />
+    <ProjectReference Include="..\SAFC.Domain.Data\SAFC.Domain.Data.csproj" />
+  </ItemGroup>
+
+</Project>

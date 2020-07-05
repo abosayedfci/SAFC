@@ -1,0 +1,19 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SAFC.Domain.Data
+{
+    public interface IGenericRepository<T> where T : class
+    {
+        IEnumerable<T> SelectAll();
+        T SelectByID(object id);
+        void Insert(T obj);
+        void Update(T obj);
+        void Delete(object id);
+        void Save();
+    }
+}
