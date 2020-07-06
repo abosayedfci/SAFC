@@ -28,8 +28,7 @@ import { SharedModule } from './shared/modules/shared.module';
     SharedModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'home', component: HomeComponent },
     ])
   ],
   providers: [],

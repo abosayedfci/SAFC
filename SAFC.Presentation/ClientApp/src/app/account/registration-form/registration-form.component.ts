@@ -32,7 +32,7 @@ export class RegistrationFormComponent implements OnInit {
         .subscribe(
           result => {
             if (result) {
-              this.router.navigate(['/login'], { queryParams: { brandNew: true, email: value.email } });
+              this.router.navigate(['account/login'], { queryParams: { brandNew: true, email: value.email } });
             }
           },
           errors => this.errors = errors);
