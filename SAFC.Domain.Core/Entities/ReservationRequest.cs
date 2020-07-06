@@ -6,10 +6,20 @@ namespace SAFC.Domain.Core
 {
   public  class ReservationRequest
     {
-        public int ID { get; set; }
-        public int GuestsNumber { get; set; }
-        public DateTime ReservationDate  { get; set; }
-        public MenuTypeEnum MenuType { get; set; }
-        public string Notes { get; set; }
+        public ReservationRequest(int id,int guestNumber , DateTime reservDate , MenuTypeEnum menuType , string notes)
+        {
+            this.ID = id;
+            this.GuestsNumber = guestNumber;
+            this.ReservationDate = reservDate;
+            this.MenuType = menuType;
+            this.Notes = notes; 
+          
+        }
+        public ReservationRequest() { }
+        public int ID { get; private set; }
+        public int GuestsNumber { get; private set; }
+        public DateTime ReservationDate  { get; private set; }
+        public MenuTypeEnum MenuType { get; private set; }
+        public string Notes { get; private set; }
     }
 }

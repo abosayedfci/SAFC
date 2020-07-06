@@ -44,6 +44,7 @@ namespace SAFC.Presentation
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddControllers().AddNewtonsoftJson();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -68,6 +69,7 @@ namespace SAFC.Presentation
             services.AddScoped<IJwtFactory, JwtFactory>();
             services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddTransient(typeof(IUserService), typeof(UserService));
+            services.AddTransient(typeof(IReservationService), typeof(ReservationService));
             services.AddTransient<IValidator<CredentialsViewModel>, CredentialsViewModelValidator>();
             services.AddTransient<IValidator<RegistrationViewModel>, RegistrationViewModelValidator>();
 

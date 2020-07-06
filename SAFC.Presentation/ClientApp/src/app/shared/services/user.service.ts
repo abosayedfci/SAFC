@@ -69,22 +69,6 @@ export class UserService extends BaseService {
     return this.loggedIn;
   }
 
-  facebookLogin(accessToken:string) {
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    let body = JSON.stringify({ accessToken });  
-    return this.http
-      .post(
-      this.baseUrl + '/externalauth/facebook', body)
-      .pipe(
-        map(res => res),
-        map(res => {
-        localStorage.setItem('auth_token', res["auth_token"]);
-        this.loggedIn = true;
-        this._authNavStatusSource.next(true);
-        return true;
-        }),
-        catchError(this.handleError));
-  }
+  
 }
 

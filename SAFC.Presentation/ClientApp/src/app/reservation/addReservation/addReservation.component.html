@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-6">
+    <h2>Please enter the reservation information</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+      <form #f="ngForm" novalidate (ngSubmit)="AddReserVationRequest(f)">
+          <div class="form-group">
+              <label for="guests-number">Guests Number</label>
+              <input type="text" class="form-control" id="guests-number" placeholder="Guests Number" name="guestsNumber" tmFocus ngModel>              
+          </div>
+          <div class="form-group">
+                <label for="menuType">Menu Type</label>
+                <select class="form-control" id="menuType" name="menuType" required  ngModel> 
+                <option value="" selected disabled> Choose Menu Type</option>
+                    <option value="1"> Breakfast</option>
+                    <option value="2"> lunch </option>
+                    <option value="3"> Dinner </option>
+                    <option value="4"> Drinks </option>
+                </select>
+                       
+          </div>
+          <div class="form-group">
+            <label for="Reservation Date">Reservation Date</label>
+              <input id="Reservation-Date" type="datetime-local" required name="reservationDate" class="form-control" placeholder="Reservation Date" ngModel  >
+          </div>
+          <div class="form-group">
+            <label for="Notes">Notes</label>
+            <input type="text"  class="form-control" id="Notes" name="notes" placeholder="Notes" ngModel>
+          </div>   
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid || isRequesting"> Add New</button>
+            <app-spinner [isRunning]="isRequesting"></app-spinner> 
+        </div>
+          <div *ngIf="errors" class="alert alert-danger" role="alert">
+              <strong>Oops!</strong> {{errors}}
+            </div>               
+          
+        </form>
+   </div>
+</div>

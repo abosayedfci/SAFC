@@ -49,7 +49,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
         .subscribe(
         result => {         
           if (result) {
-             this.router.navigate(['/home']);             
+             this.router.navigate(['/home'],{ queryParams: { loginStatus: true } });             
           }
         },
         error => this.errors = error);
