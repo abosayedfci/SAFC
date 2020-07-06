@@ -13,7 +13,7 @@ using System.Text.Json;
 
 namespace SAFC.Presentation.Controllers
 {
-    [Authorize]
+    [Authorize(Policy = "ApiUser")]
     [Route("api/[controller]")]
     public class ReservationController : ControllerBase
     {
