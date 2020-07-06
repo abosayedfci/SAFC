@@ -29,7 +29,7 @@ export abstract class BaseService {
       }
       else if(errorResponse.status == 401)
       {
-        modelStateErrors+="You are not authorize to book a reservation"
+        modelStateErrors+="You are not authorize to Book a reservation"
       }
     }
     

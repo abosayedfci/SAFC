@@ -19,8 +19,8 @@ export class ReservationService  extends BaseService{
   AddNewReservation(reservation: ReservationDetails): Observable<ReservationDetails | boolean> {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    let authToken = localStorage.getItem('auth_token');
-    headers.append('Authorization', `Bearer ${authToken}`);
+    // let authToken = localStorage.getItem('auth_token');
+    // headers.append('Authorization', `Bearer ${authToken}`);
 
     //let body = JSON.stringify(reservation);
 

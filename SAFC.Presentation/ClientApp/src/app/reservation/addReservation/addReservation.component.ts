@@ -4,6 +4,7 @@ import { ReservationDetails } from '../models/reservation.details.interface';
 import { Router } from '@angular/router';
 import { ReservationService } from '../services/reservation.service';
 import { finalize } from 'rxjs/operators';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-reservation',
@@ -16,14 +17,17 @@ export class ReservationComponent implements OnInit {
   errors: string;
   isRequesting: boolean;
   submitted: boolean = false;
-
+  reservationAdded :boolean = false ; 
   constructor(private reservationService: ReservationService, private router: Router) { }
   ngOnInit() {
 
     
   }
-  AddReserVationRequest({ value, valid }: { value: ReservationDetails, valid: boolean }) {
+
+  AddReserVationRequest(form: NgForm) {
     debugger;
+    let value: ReservationDetails = form.value;
+    let valid : boolean = form.valid;
     this.submitted = true;
     this.isRequesting = true;
     this.errors = '';
@@ -33,7 +37,8 @@ export class ReservationComponent implements OnInit {
         .subscribe(
           result => {
             if (result) {
-              this.router.navigate(['/home'], { queryParams: { brandNew: true, email: value.guestsNumber } });
+              this.reservationAdded = true ; 
+              form.reset();
             }
           },
           errors => this.errors = errors);

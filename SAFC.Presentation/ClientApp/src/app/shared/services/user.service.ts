@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs'; 
 import { map, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 
@@ -24,7 +25,9 @@ export class UserService extends BaseService {
 
   private loggedIn = false;
 
-  constructor(private http: HttpClient, private configService: ConfigService) {
+  constructor(private http: HttpClient, 
+    private router: Router,
+    private configService: ConfigService) {
     super();
     this.loggedIn = !!localStorage.getItem('auth_token');
     // ?? not sure if this the best way to broadcast the status but seems to resolve issue on page refresh where auth status is lost in

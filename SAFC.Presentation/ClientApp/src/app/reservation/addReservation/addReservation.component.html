@@ -3,7 +3,11 @@
     <h2>Please enter the reservation information</h2>
   </div>
 </div>
-
+<div class="col-md-6 new-user-alert">
+    <div *ngIf="reservationAdded" class="alert alert-success" role="alert">
+        <strong>You added a new reservation  successfully !</strong> 
+    </div>  
+</div>
 <div class="row">
   <div class="col-md-6">
       <form #f="ngForm" novalidate (ngSubmit)="AddReserVationRequest(f)">

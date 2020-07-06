@@ -175,6 +175,7 @@ namespace SAFC.Presentation
             }
             app.UseCors(DefaultCorsPolicyName);
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
@@ -199,7 +200,7 @@ namespace SAFC.Presentation
 
 
             
-            app.UseAuthentication();
+            
             app.UseDefaultFiles();
         }
     }

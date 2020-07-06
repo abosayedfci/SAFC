@@ -31,7 +31,7 @@ export class AppInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
 
-    const token: string = sessionStorage.getItem("access_token") || "Basic c2NlOnNjZQ==";
+    const token: string = localStorage.getItem("auth_token") || "Basic c2NlOnNjZQ==";
 
     if (!request.headers.has("Content-type")) {
       if (!(request.body instanceof FormData)) {
@@ -58,51 +58,15 @@ export class AppInterceptor implements HttpInterceptor {
         return event;
       }),
 
-      // catchError((errorResponse: HttpErrorResponse) => {
-      //   // if (errorResponse.status === 401 ||
-      //   //   errorResponse.status === 403) {
+      catchError((errorResponse: HttpErrorResponse) => {
+        if (errorResponse.status === 401 ||
+          errorResponse.status === 403) {
+            this._router.navigate(['account', 'login']);
+        }
 
-      //   //   if (this._oauthService.hasValidAccessToken()) {
-      //   //     this._toasterService.error(errorResponse.error.message);
-      //   //   } else {
-      //   //     this._authService.navigateToLogin();
-      //   //   }
-      //   // }
 
-      //   if (errorResponse.status === 400 ||
-      //     errorResponse.status === 409 ||
-      //     errorResponse.status === 404 ||
-      //     errorResponse.status > 500
-      //   ) {
-      //     // this._toasterService
-      //     //   .error(errorResponse.error.message);
-      //   }
-
-      //   if (errorResponse.status === 422) {
-      //     let validationResults: BadRequestModel[] = errorResponse.error.moreInfo as BadRequestModel[];
-
-      //     validationResults.forEach(validationResult => {
-      //       var id = validationResult.MemberNames[0];
-      //       var error = validationResult.ErrorMessage;
-
-      //       let item = document.getElementById(`${id}Error`);
-      //       if (item && item != undefined) {
-      //         item.textContent = error;
-      //       }
-      //     });
-      //   }
-
-      //   if (errorResponse.status == 500 || errorResponse.status == 0 && errorResponse.statusText == "Unknown Error") {
-      //     this._translateService
-      //       .get('general.general_exception_message')
-      //       .subscribe(response => {
-      //         this._toasterService
-      //           .error(response);
-      //       });
-      //   }
-
-      //   return throwError(errorResponse);
-      // })
+        return throwError(errorResponse);
+      })
     );
   }
 }
